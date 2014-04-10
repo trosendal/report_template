@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+*.log
+*.gz
+*.aux
+*.out
+*.toc

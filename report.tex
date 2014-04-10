@@ -1,0 +1,113 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                                                 %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% The format of the report goes here              %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                                                 %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%A two sided book that has space for binding on the left side:
+\documentclass[a4paper, twoside]{report}
+\usepackage[top=4cm, bottom=2.5cm, left=2.5cm, right=2.5cm, bindingoffset=1cm]{geometry}
+%use correct character encoding
+\usepackage[utf8]{inputenc}
+
+%Choose a font family:
+%\usepackage{bookman}
+%\usepackage{avant}
+%\usepackage{chancery}
+\usepackage{courier}
+%\usepackage{newcent
+%\usepackage{palatino}
+
+\title{\textbf{\huge{Title of Report}}}
+\author{The list of authors}
+
+\usepackage{color}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{multicol}
+\usepackage{url}
+
+%%Separated the columns by a 6 mm
+\setlength{\columnsep}{0.6cm}
+
+%%Sort out the spacing a style of the paragraph, section, subsection, subsubsection and chapter titles
+
+\usepackage[compact]{titlesec}
+
+\titleformat*{\section}{\normalfont\scshape\color{red}}
+\titlespacing*{\section}{0pt}{12pt}{0pt}
+
+\titleformat*{\subsection}{\small\bf}
+\titlespacing*{\subsection}{0pt}{12pt}{0pt}
+
+\titleformat*{\subsubsection}{\small\bf}
+\titlespacing*{\subsubsection}{12pt}{12pt}{0pt}
+
+%%Add a header on eack page
+
+\usepackage{fancyhdr}
+\renewcommand\headrule{}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[LE,RO]{\textcolor{red}{\uppercase{HEADER TEXT}}}
+
+%Even add the header on the plain pages like the first page of each chapter
+\fancypagestyle{plain}{%
+\fancyhead[LE, RO]{\textcolor{red}{\uppercase{HEADER TEXT}}}}
+
+%%define the boxes around stuff:
+
+\usepackage{tcolorbox}
+
+\newtcolorbox{mybox}{colback=blue!5!white}
+
+\newtcolorbox{mytitlebox}{colback=blue!5!white, valign=top, height=3.5cm,%
+enlarge left by = -5cm, width=24cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                                                 %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% The content in the report goes after this break %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                                                 %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+%%The Title page
+\maketitle
+
+%%The table of contents
+\begin{multicols}{2}
+  \tableofcontents
+\end{multicols}
+
+%%The Introduction (Part1)
+
+\input{chapters/chapter1/input}
+
+%The chapters in Part2
+
+\newpage
+\begin{mytitlebox}
+\part*{PART2}
+\addcontentsline{toc}{part}{\bf{PART2}}
+\end{mytitlebox}
+
+\input{chapters/chapter2/input}
+\input{chapters/chapter3/input}
+
+%The chapters in Part3
+
+\newpage
+\begin{mytitlebox}
+\part*{PART3}
+\addcontentsline{toc}{part}{\bf{PART3}}
+\end{mytitlebox}
+
+\input{chapters/chapter4/input}
+
+\end{document}
